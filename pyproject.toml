@@ -1,0 +1,202 @@
+[project]
+name = "Data Expert Capstone: Amazon Product Intelligence"
+version = "0.1.0"
+description = "A data engineering project to build a data pipeline for Amazon product intelligence."
+authors = [{ name = "Aasim Sani", email = "aasimsani05@gmail.com" }]
+requires-python = "==3.11.*"
+readme = "README.md"
+
+dependencies = []
+
+[tool.ruff]
+exclude = [
+	".bzr",
+	".direnv",
+	".eggs",
+	".git",
+	".git-rewrite",
+	".hg",
+	".ipynb_checkpoints",
+	".mypy_cache",
+	".nox",
+	".pants.d",
+	".pyenv",
+	".pytest_cache",
+	".pytype",
+	".ruff_cache",
+	".svn",
+	".tox",
+	".venv",
+	".vscode",
+	"__pypackages__",
+	"_build",
+	"buck-out",
+	"build",
+	"dist",
+	"node_modules",
+	"site-packages",
+	"venv",
+]
+
+extend-include = ["*.ipynb"]
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.11
+target-version = "py311"
+
+[tool.ruff.lint]
+# Don't lint Jupyter notebooks
+exclude = ["*.ipynb"]
+ignore = [
+	# Ignore invalid module name
+	"N999",
+	# Ignore one-blank-line-before-class
+	"D203",
+	# Ignore multi-line-summary-first-line
+	"D212",
+	# Incompatible with the formatter
+	"COM812",
+	"ISC001",
+	# Ignore one-blank-line-between-summary-and-description NOTE(AS): too pedantic
+	"D205",
+	# Ignore non-lowercase-variable-in-function
+	"N806",
+	# Ignore non-imperative-mood NOTE(AS): Who hurt you?
+	"D401",
+	# Ignore missing-type-self NOTE(AS): Too pedantic
+	"ANN101",
+	# Since we're using more modern dict[key] syntax, ignore mutable-class-default
+	# i.e. typing.ClassVar
+	"RUF012",
+	# Ignore boolean-type-hint-positional-argument NOTE(AS): Too pedantic
+	"FBT001",
+	# Ignore missing-type-cls NOTE(AS): Too pedantic and to be deprecated
+	"ANN102",
+]
+
+# This is where the linting rules live
+# https://docs.astral.sh/ruff/rules/#perflint-perf
+select = [
+	# pydocstyle
+	"D",
+	# pycodestyle
+	"E",
+	# Pyflakes
+	"F",
+	# pyupgrade
+	"UP",
+	# flake8-builtins
+	"A",
+	# flake8-bugbear
+	"B",
+	# flake8-simplify
+	"SIM",
+	# isort
+	"I",
+	# pep8-naming
+	"N",
+	# flake8-async
+	"ASYNC",
+	# flake8-annotations
+	"ANN",
+	# flake8-blind-except
+	"BLE",
+	# flake8-boolean-trap
+	"FBT",
+	# flake8-commas
+	"COM",
+	# flake8-comprehensions
+	"C4",
+	# flake8-debugger
+	"T10",
+	# # flake8-implicit-str-concat
+	# "ISC",
+	# flake8-logging-format NOTE(AS): I'm 50/50 on this one so disabled for now.
+	# "G",
+	# flake8-pie
+	"PIE",
+	# flake8-print
+	"T20",
+	# flake8-pytest-style
+	"PT",
+	# flake8-raise
+	"RSE",
+	# flake8-return
+	"RET",
+	# flake8-unused-arguments
+	"ARG",
+	# flake8-use-pathlib NOTE(AS): Disabled due to knwon issues with cloud paths
+	# "PTH",
+	# flake8-todos - excluding TD003 for missing issue link
+	"TD001",
+	"TD002",
+	"TD004",
+	"TD005",
+	"TD006",
+	"TD007",
+	# pandas-vet
+	"PD",
+	# Ruff specific
+	"RUF",
+] # Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+[tool.pyright]
+
+include = ["**/*.py"]
+exclude = [
+	"**/node_modules",
+	"**/__pycache__",
+	"**/__generated__",
+	"**/vendor",
+	"**/.tox",
+	".git",
+	"**/.venv*",
+	"**/build",
+]
+venvPath = ".venv/"
+pythonVersion = "3.11.7"
+typeCheckingMode = "standard"
+stubPath = "typing/"
+
+[tool.dagster]
+module_name = "flows"
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = ["dvc>=3.43.1", "dvc-s3>=3.0.1", "jupyterlab>=4.1.0"]
+
+code-quality = [
+	"pre-commit>=3.6.0",
+	"pyright>=1.1.350",
+	"nb-clean>=3.2.0",
+	"ruff>=0.3.3",
+]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+	# NOTE(steven): Dagster uses class-based `config` via Pydantic.
+	# Open Dagster issue: https://github.com/dagster-io/dagster/issues/18296.
+	"ignore::DeprecationWarning:pydantic._internal._config.*",
+]
