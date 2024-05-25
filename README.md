@@ -3,7 +3,7 @@
 
 # E-commerce Product Intelligence
 
-Goal: Create an extensible ETL pipeline for an E-commerce Product Intelligence Pipeline with an LLM-based RAG in the mix. 
+Goal: Create an extensible ETL pipeline for an E-commerce Product Intelligence Pipeline with an LLM-based RAG in the mix.
 
 ### Datasets
 - [Amazon Product Data by Stanford SNAP](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023) - 48.19M products - will random sample by category and partial load ~2-3M (LLM costs mostly) for demo
@@ -20,7 +20,7 @@ Goal: Create an extensible ETL pipeline for an E-commerce Product Intelligence P
 
 **Knowledge graph**
  - Product Text Embeddings SCD - SCD since we won't upgrade our AI models often
- - Product Text Embeddings Cumulative - Needed for Hiearchial RAG 
+ - Product Text Embeddings Cumulative - Needed for Hiearchial RAG
  - Product Text Knowledge Graph Nodes
  - Product Text Knowledge Graph Vertices
  - Reviews Embeddings - Won't build but possible expansion
@@ -60,9 +60,9 @@ Categorize my Product Properly
 1. Cosine Similarity Match the input description with existing products and get N similar products
 2. Get their knowledge graphs and use conceptual context similarity strength (weight of the edges) to get even more associated products
 3. Summarize key findings from product descriptions about categories
-4. Produce an augmented prompt of the description which mentions 
+4. Produce an augmented prompt of the description which mentions
 5. Lang Chain to classify in categories hierarchically
-   
+
 What can I do to make my store more SEO-friendly today?
 1. Find the most similar successful N products in the past N days
 2. Summarize findings
