@@ -14,7 +14,7 @@ Goal: Create an extensible ETL pipeline for an E-commerce Product Intelligence P
 - [Amazon Product Data by Stanford SNAP](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023) - 48.19M products - will random sample by category and partial load ~2-3M (LLM costs mostly) for demo
 - Amazon Product Taxonomy - in repo
 - Amazon Top N and Bottom N Scraper - I'll build this
-- [Knowledge Graph](https://towardsdatascience.com/how-to-convert-any-text-into-a-graph-of-concepts-110844f22a1a)
+- [Knowledge Graph](https://towardsdatascience.com/how-to-convert-any-text-into-a-graph-of-concepts-110844f22a1a) - optional depending on time constraints
 
 ### Components
 **Primary Tables**
@@ -26,8 +26,7 @@ Goal: Create an extensible ETL pipeline for an E-commerce Product Intelligence P
 **Knowledge graph**
  - Product Text Embeddings SCD - SCD since we won't upgrade our AI models often
  - Product Text Embeddings Cumulative - Needed for Hiearchial RAG
- - Product Text Knowledge Graph Nodes
- - Product Text Knowledge Graph Vertices
+ - Product Text Knowledge Graph - optional depending on time constraints
  - Reviews Embeddings - Won't build but possible expansion
  - Review Embeddings Cumulative - Won't build but possible expansion
  - Product Image Embeddings - Won't build but possible expansion
