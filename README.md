@@ -37,9 +37,15 @@ Goal: Create an extensible ETL pipeline for an E-commerce Product Intelligence P
 - Products -> LLM -> Knowledge Graph Nodes
 
 **EDA**
+- Estimate LLM Costs and how much time it'd take to process backfill
+- Estimate real-time pipeline costs
+- Use GX to analyze and create a test suite for product data errors
+- Create GX suite
+- Estimate how much slower real-time node normalization is
 
 **Data Quality**
-- Normalize Knowledge Graph Nodes
+- Normalize Knowledge Graph Nodes for backfill
+- Create a real-time node normalization strategy
 - Clean up SNAP Dataset for Product duplicates/ultra-similars for better RAG
 
 **RAG Bot Use Cases**
