@@ -3,6 +3,11 @@
 
 # E-commerce Product Intelligence
 
+### Repo Setup
+1. Install PDM
+2. Run `pdm install`
+3. Run `pdm run pre-commit install`
+
 Goal: Create an extensible ETL pipeline for an E-commerce Product Intelligence Pipeline with an LLM-based RAG in the mix.
 
 ### Datasets
