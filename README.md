@@ -6,7 +6,7 @@
 Goal: Create an extensible ETL pipeline for an E-commerce Product Intelligence Pipeline with an LLM-based RAG in the mix. 
 
 ### Datasets
-- [Amazon Product Data by Stanford SNAP](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023) - 48.19M products
+- [Amazon Product Data by Stanford SNAP](https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023) - 48.19M products - will random sample by category and partial load ~2-3M (LLM costs mostly) for demo
 - Amazon Product Taxonomy - in repo
 - Amazon Top N and Bottom N Scraper - I'll build this
 - [Knowledge Graph](https://towardsdatascience.com/how-to-convert-any-text-into-a-graph-of-concepts-110844f22a1a)
